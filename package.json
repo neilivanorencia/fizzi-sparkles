@@ -1,0 +1,53 @@
+{
+  "name": "fizzi-sparkles",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Neil Ivan Orencia",
+  "scripts": {
+    "dev": "concurrently \"pnpm:next:dev\" \"pnpm:slicemachine\" --names \"next,slicemachine\" --prefix-colors blue,magenta",
+    "next:dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ext ts,tsx,js,jsx",
+    "lint:fix": "eslint . --ext ts,tsx,js,jsx --fix",
+    "lint:strict": "eslint . --ext ts,tsx,js,jsx --no-cache --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "slicemachine": "start-slicemachine",
+    "format": "prettier --write .",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@prismicio/client": "^7.20.1",
+    "@prismicio/next": "^2.0.1",
+    "@prismicio/react": "^3.2.1",
+    "clsx": "^2.1.1",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@slicemachine/adapter-next": "^0.3.83",
+    "@types/node": "^22.13.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
+    "eslint": "^9.19.0",
+    "eslint-config-next": "^15.1.6",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
+    "postcss": "^8.5.6",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "slice-machine-ui": "^2.18.1",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.7.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "next lint --fix --file"
+  }
+}
