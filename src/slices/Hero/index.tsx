@@ -13,6 +13,7 @@ import { Bounded } from "@/components/bounded";
 import { Bubbles } from "@/components/bubbles";
 import Button from "@/components/button";
 import { TextSplitter } from "@/components/text-splitter";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { useStore } from "@/hooks/use-store";
 import Scene from "@/slices/Hero/scene";
 
@@ -28,10 +29,11 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero: FC<HeroProps> = ({ slice }) => {
   const ready = useStore((state) => state.ready);
+  const isDesktop = useMediaQuery("(min-width: 768px)", true);
 
   useGSAP(
     () => {
-      if (!ready) return;
+      if (!ready && isDesktop) return;
 
       const introTl = gsap.timeline();
 
@@ -99,7 +101,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
           opacity: 0,
         });
     },
-    { dependencies: [ready] }
+    { dependencies: [ready, isDesktop] }
   );
 
   return (
@@ -108,10 +110,13 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="hero opacity-0"
     >
-      <View className="hero-scene pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
-        <Scene />
-        <Bubbles count={300} speed={2} repeat={true} />
-      </View>
+      {isDesktop && (
+        <View className="hero-scene pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
+          <Scene />
+          <Bubbles count={300} speed={2} repeat={true} />
+        </View>
+      )}
+
       <div className="grid">
         <div className="grid h-screen place-items-center">
           <div className="grid auto-rows-min place-items-center text-center">
@@ -139,10 +144,10 @@ const Hero: FC<HeroProps> = ({ slice }) => {
         <div className="text-side relative z-[80] grid h-screen items-center gap-4 md:grid-cols-2">
           <PrismicNextImage className="w-full md:hidden" field={slice.primary.cans_image} />
           <div>
-            <h2 className="text-side-heading font-family-alpino text-6xl font-black text-balance text-sky-950 uppercase lg:text-8xl">
+            <h2 className="text-side-heading font-family-alpino md:text-left text-5xl font-black text-balance text-sky-950 uppercase text-center md:text-6xl lg:text-8xl">
               <TextSplitter text={asText(slice.primary.second_heading)} />
             </h2>
-            <div className="text-side-body font-family-alpino mt-4 max-w-2xl text-2xl font-normal text-balance text-sky-900 lg:text-3xl">
+            <div className="text-side-body font-family-alpino mt-4 max-w-2xl md:text-left text-2xl font-normal text-balance text-sky-900 text-center lg:text-3xl">
               <PrismicRichText field={slice.primary.second_body} />
             </div>
           </div>

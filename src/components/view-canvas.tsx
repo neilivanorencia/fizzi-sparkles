@@ -2,6 +2,7 @@
 
 import { View } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
 
 type Props = {};
 
@@ -24,7 +25,9 @@ export default function ViewCanvas({}: Props) {
         fov: 30,
       }}
     >
-      <View.Port />
+      <Suspense fallback={null}>
+        <View.Port />
+      </Suspense>
     </Canvas>
   );
 }
