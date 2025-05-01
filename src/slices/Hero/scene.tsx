@@ -8,12 +8,15 @@ import { useRef } from "react";
 import { Group } from "three";
 
 import FloatingCan from "@/components/floating-can";
+import { useStore } from "@/hooks/use-store";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 type Props = {};
 
 export default function Scene({}: Props) {
+  const isReady = useStore((state) => state.isReady);
+
   const firstCanRef = useRef<Group>(null);
   const secondCanRef = useRef<Group>(null);
   const thirdCanRef = useRef<Group>(null);
@@ -38,6 +41,8 @@ export default function Scene({}: Props) {
       !groupRef.current
     )
       return;
+
+    isReady();
 
     gsap.set(firstCanRef.current.position, { x: -1.5 });
     gsap.set(firstCanRef.current.rotation, { z: -0.5 });
