@@ -57,7 +57,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type PageDocumentDataSlicesSlice = SkyDiveSlice | HeroSlice;
+type PageDocumentDataSlicesSlice = CarouselSlice | SkyDiveSlice | HeroSlice;
 
 /**
  * Content for Page documents
@@ -133,6 +133,58 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 >;
 
 export type AllDocumentTypes = PageDocument;
+
+/**
+ * Primary content in *Carousel → Default → Primary*
+ */
+export interface CarouselSliceDefaultPrimary {
+  /**
+   * Heading field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Price Copy field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.price_copy
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  price_copy: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Carousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CarouselSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CarouselSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Carousel*
+ */
+type CarouselSliceVariation = CarouselSliceDefault;
+
+/**
+ * Carousel Shared Slice
+ *
+ * - **API ID**: `carousel`
+ * - **Description**: Carousel
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CarouselSlice = prismic.SharedSlice<"carousel", CarouselSliceVariation>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -324,6 +376,10 @@ declare module "@prismicio/client" {
   namespace Content {
     export type {
       AllDocumentTypes,
+      CarouselSlice,
+      CarouselSliceDefault,
+      CarouselSliceDefaultPrimary,
+      CarouselSliceVariation,
       HeroSlice,
       HeroSliceDefault,
       HeroSliceDefaultPrimary,

@@ -1,0 +1,31 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "heading": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading2",
+            "content": {
+              "text": "Involved"
+            }
+          }
+        ]
+      },
+      "price_copy": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Duis proident nostrud sit sunt ullamco excepteur sit nulla anim est ut veniam magna enim tempor. Cupidatat consequat occaecat quis consectetur commodo incididunt ullamco ipsum esse sint. Sunt do anim tempor minim reprehenderit do do."
+            }
+          }
+        ]
+      }
+    },
+    "items": []
+  }
+]
