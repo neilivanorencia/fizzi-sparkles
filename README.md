@@ -52,3 +52,13 @@ Fizzi Sparkles is a conceptual, single-page website for a fictional soda brand, 
 - **Dynamic Text Animation** - Uses a component that animate headlines on a word-by-word or character-by-character basis, adding a polished and professional feel to content reveals.
 - **Slice-Based Architecture with Prismic**: The entire page is composed of modular, reusable "Slices" managed in Prismic. This allows for content management and easy reordering of complex, animated sections without touching the code.
 - **Responsive Design**: Optimized for various devices to ensure usability and aesthetic appeal on all screen sizes.
+
+## 💻 Technology Stack
+
+- **GSAP** - A JavaScript animation library used for creating complex, high-performance animation timelines.
+- **Next.js** - A powerful React framework used for building fast and optimized web applications.
+- **Prismic** - A headless CMS that enables content creators to manage website content through modular, reusable slices.
+- **React** - A JavaScript library made by Facebook primarily used for building user interfaces for web applications.
+- **Tailwind CSS** - A utility-first CSS framework that allows for quick and flexible styling using predefined classes.
+- **Three.js** - A JavaScript library used to create and display 3D graphics and animations directly in a web browser.
+- **Typescript** - A strongly typed programming language that builds on JavaScript by adding static types.
