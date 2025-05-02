@@ -138,7 +138,7 @@ export default function Scene({ sentence, flavor }: SkyDiveProps) {
         />
       </group>
 
-      <Clouds ref={cloudsRef}>
+      <Clouds ref={cloudsRef} texture="/textures/cloud.png">
         <Cloud ref={firstCloudRef} bounds={[10, 10, 2]} />
         <Cloud ref={secondCloudRef} bounds={[10, 10, 2]} />
       </Clouds>
