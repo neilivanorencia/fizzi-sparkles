@@ -3,6 +3,7 @@ import "@/app/globals.css";
 import { PrismicPreview } from "@prismicio/next";
 import localFont from "next/font/local";
 
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import ViewCanvas from "@/components/view-canvas";
 import { repositoryName } from "@/prismicio";
@@ -32,6 +33,7 @@ export default function RootLayout({
           {children}
           <ViewCanvas />
         </main>
+        <Footer />
       </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>

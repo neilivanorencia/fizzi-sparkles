@@ -6,5 +6,6 @@ export const components = {
   carousel: dynamic(() => import("./Carousel")),
   grid: dynamic(() => import("./Grid")),
   hero: dynamic(() => import("./Hero")),
+  huge_text: dynamic(() => import("./HugeText")),
   sky_dive: dynamic(() => import("./SkyDive")),
 };

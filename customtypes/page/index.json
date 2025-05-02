@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "huge_text": {
+              "type": "SharedSlice"
+            },
             "grid": {
               "type": "SharedSlice"
             },

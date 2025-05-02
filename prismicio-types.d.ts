@@ -57,7 +57,12 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type PageDocumentDataSlicesSlice = GridSlice | CarouselSlice | SkyDiveSlice | HeroSlice;
+type PageDocumentDataSlicesSlice =
+  | HugeTextSlice
+  | GridSlice
+  | CarouselSlice
+  | SkyDiveSlice
+  | HeroSlice;
 
 /**
  * Content for Page documents
@@ -366,6 +371,33 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Default variation for HugeText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HugeTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *HugeText*
+ */
+type HugeTextSliceVariation = HugeTextSliceDefault;
+
+/**
+ * HugeText Shared Slice
+ *
+ * - **API ID**: `huge_text`
+ * - **Description**: HugeText
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HugeTextSlice = prismic.SharedSlice<"huge_text", HugeTextSliceVariation>;
+
+/**
  * Primary content in *SkyDive → Default → Primary*
  */
 export interface SkyDiveSliceDefaultPrimary {
@@ -456,6 +488,9 @@ declare module "@prismicio/client" {
       HeroSliceDefault,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
+      HugeTextSlice,
+      HugeTextSliceDefault,
+      HugeTextSliceVariation,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
