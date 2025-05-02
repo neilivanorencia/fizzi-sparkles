@@ -25,16 +25,16 @@ type PickContentRelationshipFieldData<
       TSubRelationship["customtypes"],
       TLang
     >;
-  } & // Group
-  {
+  } & {
+    // Group
     [TGroup in Extract<
       TRelationship["fields"][number],
       prismic.CustomTypeModelFetchGroupLevel1 | prismic.CustomTypeModelFetchGroupLevel2
     > as TGroup["id"]]: TData[TGroup["id"]] extends prismic.GroupField<infer TGroupData>
       ? prismic.GroupField<PickContentRelationshipFieldData<TGroup, TGroupData, TLang>>
       : never;
-  } & // Other fields
-  {
+  } & {
+    // Other fields
     [TFieldKey in Extract<TRelationship["fields"][number], string>]: TFieldKey extends keyof TData
       ? TData[TFieldKey]
       : never;
@@ -57,7 +57,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type PageDocumentDataSlicesSlice = CarouselSlice | SkyDiveSlice | HeroSlice;
+type PageDocumentDataSlicesSlice = GridSlice | CarouselSlice | SkyDiveSlice | HeroSlice;
 
 /**
  * Content for Page documents
@@ -185,6 +185,73 @@ type CarouselSliceVariation = CarouselSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type CarouselSlice = prismic.SharedSlice<"carousel", CarouselSliceVariation>;
+
+/**
+ * Item in *Grid → Default → Primary → Text Group*
+ */
+export interface GridSliceDefaultPrimaryTextGroupItem {
+  /**
+   * Heading field in *Grid → Default → Primary → Text Group*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid.default.primary.text_group[].heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *Grid → Default → Primary → Text Group*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid.default.primary.text_group[].body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Grid → Default → Primary*
+ */
+export interface GridSliceDefaultPrimary {
+  /**
+   * Text Group field in *Grid → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid.default.primary.text_group[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  text_group: prismic.GroupField<Simplify<GridSliceDefaultPrimaryTextGroupItem>>;
+}
+
+/**
+ * Default variation for Grid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GridSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Grid*
+ */
+type GridSliceVariation = GridSliceDefault;
+
+/**
+ * Grid Shared Slice
+ *
+ * - **API ID**: `grid`
+ * - **Description**: Grid
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GridSlice = prismic.SharedSlice<"grid", GridSliceVariation>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -380,6 +447,11 @@ declare module "@prismicio/client" {
       CarouselSliceDefault,
       CarouselSliceDefaultPrimary,
       CarouselSliceVariation,
+      GridSlice,
+      GridSliceDefault,
+      GridSliceDefaultPrimary,
+      GridSliceDefaultPrimaryTextGroupItem,
+      GridSliceVariation,
       HeroSlice,
       HeroSliceDefault,
       HeroSliceDefaultPrimary,
