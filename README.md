@@ -170,3 +170,8 @@ Fizzi Sparkles is a conceptual, single-page website for a fictional soda brand, 
 ```
 
 </details>
+
+## 🫶 Acknowledgements
+
+- The typefaces used in this project, `Alpino` and `Switzer`, are provided by **[Fontshare](https://www.fontshare.com/)**, an initiative by the **Indian Type Foundry (ITF)**. Their fonts were played a large role to the site's unique design.
+- The entire visual concept, design language, 3D soda can model, and can label textures originate from a **[Figma Community File](https://www.figma.com/community/file/1408225426877500890)** created by **Prismic**.
