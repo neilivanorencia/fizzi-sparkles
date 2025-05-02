@@ -62,3 +62,111 @@ Fizzi Sparkles is a conceptual, single-page website for a fictional soda brand, 
 - **Tailwind CSS** - A utility-first CSS framework that allows for quick and flexible styling using predefined classes.
 - **Three.js** - A JavaScript library used to create and display 3D graphics and animations directly in a web browser.
 - **Typescript** - A strongly typed programming language that builds on JavaScript by adding static types.
+
+## 📂 Project Structure
+
+<details>
+  <summary>See project structure here</summary>
+
+```plaintext
+└── 📁.husky
+    ├── pre-commit
+└── 📁.vscode
+    ├── settings.json
+└── 📁customtypes
+    └── 📁page
+        ├── index.json
+        ├── mocks.json
+└── 📁public
+    └── 📁hdr
+        ├── field.hdr
+        ├── lobby.hdr
+    └── 📁labels
+        ├── cherry.png
+        ├── grape.png
+        ├── lemon-lime.png
+        ├── strawberry.png
+        ├── watermelon.png
+    └── 📁models
+        ├── soda-can.bin
+        ├── soda-can.gltf
+└── 📁src
+    └── 📁app
+        └── 📁[uid]
+            ├── page.tsx
+        └── 📁api
+            └── 📁exit-preview
+                ├── route.ts
+            └── 📁preview
+                ├── route.ts
+            └── 📁revalidate
+                ├── route.ts
+        └── 📁slice-simulator
+            ├── page.tsx
+        ├── globals.css
+        ├── icon.svg
+        ├── layout.tsx
+        ├── page.tsx
+    └── 📁components
+        ├── arrow-icon.tsx
+        ├── bounded.tsx
+        ├── bubbles.tsx
+        ├── button.tsx
+        ├── fizzi-logo.tsx
+        ├── floating-can.tsx
+        ├── footer.tsx
+        ├── header.tsx
+        ├── soda-can.tsx
+        ├── text-splitter.tsx
+        ├── view-canvas.tsx
+        ├── wavy-circles.tsx
+    └── 📁hooks
+        ├── use-media-query.ts
+        ├── use-store.ts
+    └── 📁slices
+        └── 📁Carousel
+            ├── index.tsx
+            ├── mocks.json
+            ├── model.json
+            ├── screenshot-default.png
+        └── 📁Grid
+            ├── index.tsx
+            ├── mocks.json
+            ├── model.json
+            ├── scene.tsx
+            ├── screenshot-default.png
+        └── 📁Hero
+            ├── index.tsx
+            ├── mocks.json
+            ├── model.json
+            ├── scene.tsx
+            ├── screenshot-default.png
+        └── 📁HugeText
+            ├── index.tsx
+            ├── mocks.json
+            ├── model.json
+            ├── screenshot-default.png
+        └── 📁SkyDive
+            ├── index.tsx
+            ├── mocks.json
+            ├── model.json
+            ├── scene.tsx
+            ├── screenshot-default.png
+        ├── index.ts
+    ├── prismicio.ts
+├── .gitignore
+├── .prettierignore
+├── .prettierrc
+├── eslint.config.mjs
+├── LICENSE
+├── next.config.ts
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.mjs
+├── prismicio-types.d.ts
+├── README.md
+├── slicemachine.config.json
+└── tsconfig.json
+```
+
+</details>
