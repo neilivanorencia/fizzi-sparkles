@@ -15,7 +15,7 @@ const HugeText: FC<HugeTextProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="min-h-screen w-screen overflow-hidden bg-[#FE6334] text-[#FEE832]"
+      className="grid min-h-screen w-screen place-items-center overflow-hidden bg-[#FE6334] text-[#FEE832]"
     >
       <h2 className="font-family-alpino grid w-full gap-[3vw] py-10 text-center leading-[0.7] font-black uppercase">
         <div className="text-[34vw]">Soda</div>
